@@ -6,7 +6,7 @@ int main(int argc, char * argv[])
 {
 	//define variables
 	std::string userInput;
-//test commit
+	
 	//clear terminal and print welcome message
 	MTNELL004::clear();
 	std::cout << "Welcome to the Student DB interface" <<std::endl;

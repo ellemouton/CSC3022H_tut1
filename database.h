@@ -19,16 +19,12 @@ namespace MTNELL004 {
 	void clear(void);
 
 	//structure definitions
-	struct StudenRecord{
-		char name[40];
-		char surname[40];
-		char studentNumber[20];
-		char classRecord[40];
+	struct StudentRecord{
+		std::string name;
+		std::string surname;
+		std::string studentNumber;
+		std::string classRecord;
 	};
-
-	//vector definitions
-	std::vector<StudenRecord> studentDB;
-
 }
 
 #endif

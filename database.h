@@ -10,14 +10,6 @@
 namespace MTNELL004 {
 //void add_student(std::string name, std::string surname, std::string student_numner, std::string class_record);
 
-	//method definitions
-	void addStudent(void);
-	void readDB(void);
-	void saveDB(void);
-	void displayStudentData(void);
-	void gradeStudent(void);
-	void clear(void);
-
 	//structure definitions
 	struct StudentRecord{
 		std::string name;
@@ -25,6 +17,17 @@ namespace MTNELL004 {
 		std::string studentNumber;
 		std::string classRecord;
 	};
+
+
+	//method definitions
+	void addStudent(void);
+	void addNewRecord(std::string name, std::string surname, std::string stuNum, std::string classR);
+	void readDB(void);
+	void saveDB(void);
+	void displayStudentData(void);
+	void gradeStudent(void);
+	void clear(void);
+	std::vector<std::string> splitString(std::string str);
 }
 
 #endif

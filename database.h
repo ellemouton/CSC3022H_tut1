@@ -27,7 +27,7 @@ namespace MTNELL004 {
 	void displayStudentData(void);
 	void gradeStudent(void);
 	void clear(void);
-	std::vector<std::string> splitString(std::string str);
+	std::vector<std::string> splitString(std::string str, char delim);
 }
 
 #endif

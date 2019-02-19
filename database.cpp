@@ -99,7 +99,7 @@ void MTNELL004::readDB(void)
 		numEntries++;
 
 		//split the string into parts determined by the ','
-		std::vector<std::string> newStudent = MTNELL004::splitString(str);
+		std::vector<std::string> newStudent = MTNELL004::splitString(str, ',');
 		MTNELL004::addNewRecord(newStudent[0],newStudent[1], newStudent[2], newStudent[3]);
 	}
 }
@@ -137,20 +137,82 @@ void MTNELL004::saveDB(void)
 void MTNELL004::displayStudentData(void)
 {
 	std::cout << "Displaying data\n";
+
+	//get studentnumber
+	std::string stuNum;
+	std::cout << "Enter Student Number: ";
+	std::cin >> stuNum;
+
+	//iterate through DB to find corresponding entry
+
+	int index = -1;
+
+	for(int i=0; i< studentDB.size(); i++){
+		if(stuNum.compare(studentDB[i].studentNumber)==0){
+			index = i;	
+		}
+	}
+
+	//print out info (or say that it doesnt exist)
+	if(index==-1){
+		std::cout << "No such student exists.\n";
+	}
+	else{
+		MTNELL004::StudentRecord sr = studentDB[index];
+		std::cout << "Name: "<<sr.name<<"\nSurname: "<<sr.surname<<"\nStudent Number: "<<sr.studentNumber<<"\nClass Record: "<<sr.classRecord<<"\n";
+	}
+
 }
 
 void MTNELL004::gradeStudent(void)
 {
 	std::cout << "Showing student grade\n";
+
+	//get studentnumber
+	std::string stuNum;
+	std::cout << "Enter Student Number: ";
+	std::cin >> stuNum;
+
+	//iterate through DB to find corresponding entry
+
+	int index = -1;
+
+	for(int i=0; i< studentDB.size(); i++){
+		if(stuNum.compare(studentDB[i].studentNumber)==0){
+			index = i;	
+		}
+	}
+
+	//get grades (or say that entry doesnt exist)
+	if(index==-1){
+		std::cout << "No such student exists.\n";
+	}
+	else{
+		//split the string into a vector of individual grades
+		std::string grades = studentDB[index].classRecord;
+		std::vector<std::string> gradesSplit = MTNELL004::splitString(grades, ' ');
+
+		double total = 0;
+
+		//loop through the grades, convert them to doubles and add then to the total
+		for(int i=0; i<gradesSplit.size(); i++){
+			double grade = std::stod(gradesSplit[i]);
+			total += grade;
+		}
+
+		double average = total/gradesSplit.size();
+		std::cout << "The average grade for this student is: "<<average << "\n";
+
+	}
 }
 
-std::vector<std::string> MTNELL004::splitString(std::string str)
+std::vector<std::string> MTNELL004::splitString(std::string str, char delim)
 {
 	std::stringstream ss(str);
 	std::string token;
 	std::vector<std::string> cont;
 
-    while (std::getline(ss, token, ',')) {
+    while (std::getline(ss, token, delim)) {
         cont.push_back(token);
     }
     return cont;

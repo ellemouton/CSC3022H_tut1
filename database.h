@@ -5,18 +5,30 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include <vector>
 
-namespace STUDENT_NO {
+namespace MTNELL004 {
 //void add_student(std::string name, std::string surname, std::string student_numner, std::string class_record);
 
-	void add_Student(void);
-	void read_DB(void);
-	void save_DB(void);
-	void display_student_data(void);
-	void grade_student(void);
+	//method definitions
+	void addStudent(void);
+	void readDB(void);
+	void saveDB(void);
+	void displayStudentData(void);
+	void gradeStudent(void);
+	void clear(void);
+
+	//structure definitions
+	struct StudenRecord{
+		char name[40];
+		char surname[40];
+		char studentNumber[20];
+		char classRecord[40];
+	};
+
+	//vector definitions
+	std::vector<StudenRecord> studentDB;
 
 }
-
-void clear(void);
 
 #endif

@@ -1,15 +1,14 @@
 # include <iostream>
 # include <string>
-# include <cstdlib>
-#include "database.h"
+# include "database.h"
 
 int main(int argc, char * argv[])
 {
 	//define variables
-	std::string user_option;
+	std::string userInput;
 
 	//clear terminal and print welcome message
-	clear();
+	MTNELL004::clear();
 	std::cout << "Welcome to the Student DB interface" <<std::endl;
 	
 	for (;;) { // loop forever
@@ -18,18 +17,18 @@ int main(int argc, char * argv[])
 		std::cout << "0: Add student\n1: Read database\n2: Save database\n3: Display student data\n4: Grade Student\nq: Quit\nEnter a number (or q to quit) and press return...\n";
 		
 		//get user input
-		std::cin >> user_option;
+		std::cin >> userInput;
 
 		//clear the terminal
-		clear();
+		MTNELL004::clear();
 
 		//Print out option that user entered and call corresponsing function.
-		if (user_option == "q" ) break;
-		else if(user_option == "0") STUDENT_NO::add_Student();
-		else if(user_option == "1") STUDENT_NO::read_DB();
-		else if(user_option == "2") STUDENT_NO::save_DB();
-		else if(user_option == "3") STUDENT_NO::display_student_data();
-		else if(user_option == "4") STUDENT_NO::grade_student();
+		if (userInput == "q" ) break;
+		else if(userInput == "0") MTNELL004::addStudent();
+		else if(userInput == "1") MTNELL004::readDB();
+		else if(userInput == "2") MTNELL004::saveDB();
+		else if(userInput == "3") MTNELL004::displayStudentData();
+		else if(userInput == "4") MTNELL004::gradeStudent();
 		else std::cout << "Invalid Input\n";
 	}
 

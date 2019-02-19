@@ -107,6 +107,31 @@ void MTNELL004::readDB(void)
 void MTNELL004::saveDB(void)
 {
 	std::cout << "Saving DB\n";
+
+	//open and truncate
+
+	std::ofstream ofs;
+	ofs.open("databaseEntries.txt", std::ofstream::out | std::ofstream::trunc);
+	
+
+
+	for(int i=0; i < studentDB.size(); i++){
+		//get next student record entry
+		MTNELL004::StudentRecord sr = studentDB[i];
+
+		//variabled for output string
+		std::ostringstream output;
+		std::string outputString;
+
+		if(i>0){ofs << "\n";}
+
+		//construct output string
+		output << sr.name << ","<<sr.surname<<","<<sr.studentNumber<<","<<sr.classRecord;
+		outputString = output.str();
+		ofs << outputString;
+	}
+
+	ofs.close();
 }
 
 void MTNELL004::displayStudentData(void)

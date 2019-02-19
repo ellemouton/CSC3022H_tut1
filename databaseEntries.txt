@@ -1,2 +1,3 @@
-Elle,Mouton,MTNELL004,90 90 90
-Sam,Pam,PAMSAM001, 80 30 60
+Elle,Mou,moert,50 50
+rw,ewt,twee,40 30 20
+rambo,foro,MFJE,79 88 99

@@ -36,18 +36,36 @@ void MTNELL004::addStudent(void)
 	std::cout << "Class Record: ";
 	std::cin >> classR;
 
-	//create new object of type StudentRecord
-	StudentRecord newStudent;
-	newStudent.name = name;
-	newStudent.surname = surname;
-	newStudent.studentNumber = stuNum;
-	newStudent.classRecord = classR;
+	//iterate through all student number of entries in the DB to check that this one is not a duplicate
+	bool unique = true;
 
-	//add the new object to the vector studentDB
-	studentDB.push_back(newStudent);
+	for(int i=0; i< studentDB.size(); i++){
+		if(stuNum.compare(studentDB[i].studentNumber)!=0){
+			unique = false;
+		}
+	}
+
+	if(unique==true){
+		//create new object of type StudentRecord
+		StudentRecord newStudent;
+		newStudent.name = name;
+		newStudent.surname = surname;
+		newStudent.studentNumber = stuNum;
+		newStudent.classRecord = classR;
+
+		//add the new object to the vector studentDB
+		studentDB.push_back(newStudent);
+
+		MTNELL004::clear();
+		std::cout << "New Student successfully added to the database\n";
+		std::cout << "Number of student in the database is now: "<<studentDB.size()<<"\n";
+
+	}
+	else{
+		MTNELL004::clear();
+		std::cout << "This student already exists in the database.\n";
+	}
 	
-	MTNELL004::clear();
-	std::cout << "New Student successfully added to the database\n";
 }
 
 void MTNELL004::readDB(void)
@@ -69,4 +87,5 @@ void MTNELL004::gradeStudent(void)
 {
 	std::cout << "Showing student grade\n";
 }
+
 
